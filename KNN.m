@@ -1,7 +1,6 @@
-%knn-classifier
+%knn-classifier, finds the K nearest neighbors between training set and the test set with the euclidean distance. 
+
 K = 7; 
-%knnsearch(....) is a that finds the K nearest neighbors
-%between training set and the test set with the euclidean distance. 
 
 [cIdx,cD] = knnsearch(trainv,testv,'K',K,'Distance','euclidean'); %cIdx: 10000x7 matrix, holds the indices where the k nearest neighbors is located in trainv.
 estLab_knn = trainlab (mode(transpose(cIdx))); 
