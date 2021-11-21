@@ -1,4 +1,4 @@
-# Classification of the Iris flowerand handwritten numbers
+# Classification of Iris and handwritten numbers
 
 This rapport focuses only on classification, where two subjects are solved. The first subject designs and evaluates a linear classifier. 
 It classififier classifies the different Iris species. 
