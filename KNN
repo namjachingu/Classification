@@ -1,5 +1,5 @@
 %knn-classifier
-K = 7; %Wants 7 references.
+K = 7; 
 %knnsearch(....) is a build-in function that finds the K nearest neighbors
 %between training set and the test set with the euclidean distance. 
 
