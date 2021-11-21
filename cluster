@@ -1,0 +1,33 @@
+C = 10;
+M = 64;
+z_clust_all = zeros(10, 10000); index_clust_all = zeros (10,10000);
+estLab_clust=zeros(1,10000);
+    
+    for k = 1:10   
+        trainTemp = trainv(trainlab==(k-1),:);  
+        [idxi, Ci] = kmeans(trainTemp, 64); 
+        %Ci is a 64x784 matrix. 
+   
+        z_clust = pdist2(Ci, testv, 'euclidean'); %Finds the distance between the current class and all the 10 000 test vectors. 
+        [distanse_mindre_clust,index_clust] = min(z_clust); %Finds the shortest distance of the 64 distances. 
+        z_clust_all (k,:) = distanse_mindre_clust; %Saves the shortest distances from each class k. (10x10000)
+    end
+
+[minAll_clust, index_ny_clust] = min(z_clust_all);  
+estLab_clust = index_ny_clust - 1 ;
+
+%Confusion Matrix
+Conf_Mat_clust = confusionmat(testlab,estLab_clust);
+disp(Conf_Mat_clust)
+
+%Error rate
+nn_antallfeil_clust = num_test;
+for i = 1:10
+    for j = 1:10
+        if i == j
+            nn_antallfeil_clust = nn_antallfeil_clust - Conf_Mat_clust (i,j);
+        end
+    end
+end
+
+nn_errorrate_clust = nn_antallfeil_clust/num_test; %0.0477 
